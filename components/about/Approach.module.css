@@ -1,0 +1,38 @@
+/* The one inverted band on the page: ink ground, cream type. */
+.section {
+  background: var(--ink);
+  color: var(--cream);
+  --rule: #3a3a33;
+  --muted-strong: #b9b4a7;
+  --muted: #8f8b80;
+}
+.section :global(.label) { color: var(--muted-strong); }
+.section header { border-top-color: var(--cream); }
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(2rem, 5vw, 5rem);
+  margin-left: calc(100% / 12 * 3);
+}
+
+.item {
+  display: grid;
+  gap: 0.6rem;
+  padding-block: 1.5rem 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  line-height: 1.1;
+}
+.body { color: var(--muted-strong); max-width: 30rem; }
+
+@media (max-width: 900px) {
+  .list { margin-left: 0; }
+}
+@media (max-width: 640px) {
+  .list { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,129 @@
+.section {
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+}
+
+.label {
+  display: flex;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ink);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 0.8rem + 8.2vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  max-width: 13ch;
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 3rem;
+}
+
+.primary {
+  grid-column: 1 / span 6;
+  display: grid;
+  align-content: start;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.lede {
+  font-size: var(--text-lg);
+  color: var(--muted-strong);
+  max-width: 30rem;
+}
+
+/* ---------- Email ---------- */
+.email {
+  display: grid;
+  justify-items: start;
+  gap: 0.75rem;
+}
+.emailLink {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  line-height: 1.1;
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 0.15rem;
+  transition: background-size var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+  overflow-wrap: anywhere;
+}
+.emailLink:hover,
+.emailLink:focus-visible {
+  color: var(--olive-deep);
+  background-image: linear-gradient(var(--olive), var(--olive));
+  background-size: 100% 2px;
+}
+.copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--text-sm);
+  color: var(--muted-strong);
+  padding: 0.35rem 0;
+}
+.copy:hover { color: var(--ink); }
+.fallback { font-size: var(--text-sm); color: var(--muted-strong); }
+
+/* ---------- Channels ---------- */
+.channels {
+  grid-column: 8 / -1;
+  border-top: 1px solid var(--ink);
+}
+
+.channel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto 1.25rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 0.25rem;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--dur) var(--ease-out), padding var(--dur) var(--ease-out);
+}
+.channel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur) var(--ease-out);
+}
+.channel:hover,
+.channel:focus-visible { color: var(--cream); padding-inline: 1rem; }
+.channel:hover::before,
+.channel:focus-visible::before { transform: scaleY(1); }
+
+.channelIcon { display: inline-flex; }
+.channelName {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.channelHandle {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  opacity: 0.75;
+}
+.channelArrow,
+.channelArrowDown { transition: transform var(--dur) var(--ease-out); }
+.channel:hover .channelArrow { transform: rotate(45deg); }
+.channel:hover .channelArrowDown { transform: translateY(3px); }
+
+@media (max-width: 900px) {
+  .primary,
+  .channels { grid-column: 1 / -1; padding-right: 0; }
+}

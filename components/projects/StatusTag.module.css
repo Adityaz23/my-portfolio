@@ -1,0 +1,23 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted-strong);
+  white-space: nowrap;
+}
+
+/* Shape encodes status, not just colour: filled, half, hollow. */
+.mark {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+}
+.tag[data-status="built"] .mark { background: var(--olive); border-color: var(--olive); }
+.tag[data-status="in-progress"] .mark {
+  border-color: var(--terracotta);
+  background: linear-gradient(90deg, var(--terracotta) 50%, transparent 50%);
+}
+.tag[data-status="planned"] .mark { border-style: dashed; }
